@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente WebSocket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="img/ico" href="./favicon.ico?v=1.0">
+</head>
+<body>
+    <div id="admin-container" style="display: none;">
+        <h1>Cliente WebSocket - Admin</h1>
+        <div id="mensajes-container">
+            <div id="mensajes"></div>
+        </div>
+        <div class="button-container">
+            <button id="stopButton">Detener Servidor</button>
+            <button id="reconnectButton">Reconectar</button>
+            <button id="toggleScrollButton">Desactivar Auto-scroll</button>
+            <button id="clearBufferButton">Limpiar Buffer</button>
+            <button id="logoutButton">Logout</button>
+        </div>
+    </div>
+    <script src="services.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
