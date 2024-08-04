@@ -76,4 +76,16 @@ Si deseas contribuir a este proyecto, por favor, haz un fork del repositorio y e
 
 ## Licencia
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img  " alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><span style="color: white; overflow: hidden;">  This work is licensed under a </span><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+Este proyecto está licenciado bajo la **Licencia Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+
+Puedes copiar, modificar, distribuir y usar el material en cualquier medio, siempre y cuando me otorgan crédito apropiado, se proporcione un enlace a la licencia y se indique si se han realizado cambios. No se pueden aplicar restricciones legales adicionales que restrinjan a otros hacer algo que la licencia permita.
+
+**Para más detalles, consulta la [licencia completa](https://creativecommons.org/licenses/by/4.0/).**
+
+### Cómo Atribuir
+
+Para cumplir con la licencia, asegúrate de proporcionar la siguiente atribución en cualquier copia o derivado de esta obra:
+
+Nucleo3. Por Antonio Scalia Espinoza, OnCreate SpA, Chile [https://maraheapps.com](https://marahe.app/). Usado bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
