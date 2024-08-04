@@ -76,4 +76,4 @@ Si deseas contribuir a este proyecto, por favor, haz un fork del repositorio y e
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img  " alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><span style="color: white; overflow: hidden;">  This work is licensed under a </span><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
