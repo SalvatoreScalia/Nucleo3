@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player</title>
+    <title>Master</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="img/ico" href="./favicon.ico?v=1.0">
 </head>
 <body>
-    <div id="player-container" style="display: none;">
-        <h1>Cliente - Player</h1>
+    <div id="admin-container" style="display: none;">
+        <h1>Cliente - Admin</h1>
         <div id="messages-container">
             <div id="messages"></div>
         </div>
         <div class="button-container">
-            <button id="updateStatusButton">Actualizar Estado</button>
+            <button id="stopButton">Detener Servidor</button>
             <button id="reconnectButton">Reconectar</button>
             <button id="toggleScrollButton">Desactivar Auto-scroll</button>
             <button id="clearBufferButton">Limpiar Buffer</button>
@@ -22,6 +22,6 @@
         </div>
     </div>
     <script src="./scripts/services.js"></script>
-    <script src="./scripts/player.js"></script>
+    <script src="./scripts/master.js"></script>
 </body>
 </html>
