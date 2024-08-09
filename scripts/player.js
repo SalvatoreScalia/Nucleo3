@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('updateStatusButton').addEventListener('click', function() {
-        const comando = JSON.stringify({ id: 1, button: "touch p1" });
+        const command = JSON.stringify({ index: 0, state: false });
         if (socketCommands.readyState === WebSocket.OPEN) {
-            socketCommands.send(comando);
+            socketCommands.send(command);
         } else {
             console.error('La conexión con el servidor de comandos no está abierta.');
         }
