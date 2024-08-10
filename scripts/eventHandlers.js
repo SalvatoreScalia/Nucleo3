@@ -1,33 +1,36 @@
-// eventHandlers.js
+function setupEventListeners() {
+    const reconnectButton = document.getElementById('reconnectButton');
+    const updateStatusButton = document.getElementById('updateStatusButton');
+    const stopButton = document.getElementById('stopButton');
+    let command;
 
-export function setupEventListeners(socketCommands) {
-    document.getElementById('updateStatusButton').addEventListener('click', function() {
-        const command = JSON.stringify({ command: 'new', index: 0, state: true });
-        if (socketCommands.readyState === WebSocket.OPEN) {
-            socketCommands.send(command);
-        } else {
-            console.error('La conexión con el servidor de comandos no está abierta.');
-        }
-    });
+    if (reconnectButton) {
+        reconnectButton.addEventListener('click', function() {
+            WebSocketService.reconnectSockets();
+        });
+    }
 
-    document.getElementById('toggleScrollButton')?.addEventListener('click', function() {
-        autoScroll = !autoScroll;
-        this.textContent = autoScroll ? 'Desactivar Auto-scroll' : 'Activar Auto-scroll';
-        console.log(`Auto-scroll ${autoScroll ? 'activado' : 'desactivado'}.`);
-    });
+    if (updateStatusButton){
+        updateStatusButton.addEventListener('click', function() {
+            command = JSON.stringify({ command: 'new', index: 0, state: true });
+            WebSocketService.sendCommand(command);
+        });
+    }
 
-    document.getElementById('reconnectButton')?.addEventListener('click', function() {
-        console.log('Intentando reconectar...');
-        reconnectSockets();
-    });
+    if (stopButton){
+        stopButton.addEventListener('click', function(){
+            command = JSON.stringify("stop");
+            WebSocketService.sendCommand(command);
+        })
+    }
 
+    document.getElementById('toggleScrollButton')?.addEventListener('click',function(){
+        toggleAutoScroll(this);
+    })
     document.getElementById('clearBufferButton')?.addEventListener('click', function() {
         clearBuffer(0);
-        console.log('Buffer de mensajes limpiado manualmente.');
     });
-
     document.getElementById('logoutButton')?.addEventListener('click', function() {
-        console.log('Cerrando sesión...');
         localStorage.removeItem('userRole');
         window.location.href = 'login.html';
     });

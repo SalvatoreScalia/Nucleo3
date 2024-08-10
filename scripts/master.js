@@ -1,19 +1,17 @@
-// master.js
-
-import { WebSocketService } from './websocketService.js';
-import { showLoadingScreen, hideLoadingScreen, clearBuffer } from './domUtils.js';
-import { setupEventListeners } from './eventHandlers.js';
-
 document.addEventListener('DOMContentLoaded', function() {
-    let autoScroll = true;
+    let socketCommands, socketData;
     const role = localStorage.getItem('userRole');
-    if (!role || role !== 'admin') {
+    
+    if (!role || role !=='admin') {
+        // Redirige al login si no hay rol en localStorage
         window.location.href = 'login.html';
         return;
     }
-
-    document.getElementById('admin-container').style.display = 'block';
-    let socketCommands, socketData;
+    if (role === 'admin') {
+        document.getElementById('admin-container').style.display = 'block';
+        // Conectar WebSockets aquí
+        connectWebSockets();
+    }
 
     function connectWebSockets() {
         socketData = WebSocketService.connectDataIncoming(
@@ -23,10 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const message = document.createElement('p');
                 message.textContent = `Mensaje recibido: ${event.data}`;
                 messageDiv.appendChild(message);
-                if (autoScroll) {
+                if (isAutoScrollEnabled()) {
                     const messageContainer = document.getElementById('messages-container');
                     messageContainer.scrollTop = messageContainer.scrollHeight;
                 }
+            },
+            () => {
+                console.log('Conectado al servidor dataIncoming.');
                 hideLoadingScreen();
             },
             (event) => console.error('Error de conexión con el servidor de DataIncoming:', event),
@@ -44,8 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
-    connectWebSockets();
-    setupEventListeners(socketCommands);
-
-    setInterval(() => clearBuffer(1), 15000);
+    setupEventListeners();
+    //setInterval(() => clearBuffer(1), 15000);
 });
