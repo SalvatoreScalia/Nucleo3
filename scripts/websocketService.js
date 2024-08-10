@@ -2,9 +2,10 @@ const WebSocketService = (function() {
     let socketData = null;
     let socketCommands = null;
 
-    function connectDataIncoming(url, onMessage, onError, onClose) {
+    function connectDataIncoming(url, onMessage,onOpen, onError, onClose) {
         socketData = new WebSocket(url);
         socketData.onmessage = onMessage;
+        socketData.onopen = onOpen
         socketData.onerror = onError;
         socketData.onclose = onClose;
         return socketData;
