@@ -46,5 +46,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     setupEventListeners();
-    setInterval(() => clearBuffer(0), 15000);
+    //setInterval(() => clearBuffer(0), 15000);
 });
