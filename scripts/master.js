@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function reconnectSockets() {
         if(socketData.readyState === WebSocket.CLOSED && socketCommands.readyState === WebSocket.CLOSED){
             connectWebSockets();
-        }   
+            showLoadingScreen();
+        }
         else{
-            console.log(`Ya estas conectado socketData: ${socketData.readyState}`);
+            console.log(`Ya estas conectado socketData: ${socketData.readyState} socketCommands: ${socketCommands.readyState}`);
         }
     }
 
@@ -40,22 +41,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     const messageContainer = document.getElementById('messages-container');
                     messageContainer.scrollTop = messageContainer.scrollHeight;
                 }
+                hideLoadingScreen();
             },
             function(event) {
                 console.error('Error de conexión con el servidor de DataIncoming:', event);
+                hideLoadingScreen();
             },
             function(event){
                 console.warn('Conexión dataIncoming cerrada: ',event);
             }
         );
-
         socketCommands = WebSocketService.connectCommands(
             'ws://localhost:8766',
             function() {
                 console.log('Conectado al servidor de comandos.');
+                hideLoadingScreen();
             },
             function(event) {
                 console.error('Error de conexión con el servidor de comandos:', event);
+                hideLoadingScreen();
             },
             function(event){
                 console.warn('Conexión commands cerrada: ', event);
@@ -86,9 +90,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function showLoadingScreen() {
+        document.getElementById('loading-container').style.display = 'flex';
+    }
+
+    function hideLoadingScreen() {
+        document.getElementById('loading-container').style.display = 'none';
+    }
+
     document.getElementById('stopButton')?.addEventListener('click', function() {
         let stop = JSON.stringify("stop");
         sendCommand(stop);
+    });
+
+    document.getElementById('updateStatusButton').addEventListener('click', function() {//actualiza estado de la partida en la posicion 0 a true en el servidor el resto de los estados es cero
+        const command = JSON.stringify({ index: 0, state: false });
+        if (socketCommands.readyState === WebSocket.OPEN) {
+            socketCommands.send(command);
+        } else {
+            console.error('La conexión con el servidor de comandos no está abierta.');
+        }
     });
 
     document.getElementById('reconnectButton')?.addEventListener('click', function() {

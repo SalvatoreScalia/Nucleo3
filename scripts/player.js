@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function reconnectSockets() {
         if(socketData.readyState === WebSocket.CLOSED && socketCommands.readyState === WebSocket.CLOSED){
             connectWebSockets();
+            showLoadingScreen();
         }   
         else{
             console.log(`Ya estas conectado socketData: ${socketData.readyState}`);
@@ -61,9 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const messageContainer = document.getElementById('messages-container');
                     messageContainer.scrollTop = messageContainer.scrollHeight;
                 }
+                hideLoadingScreen();
             },
             function(event) {
                 console.error('Error de conexión con el servidor de DataIncoming:', event);
+                hideLoadingScreen();
             },
             function(event){
                 console.warn('Conexión dataIncoming cerrada: ',event);
@@ -74,17 +77,25 @@ document.addEventListener('DOMContentLoaded', function() {
             'ws://localhost:8766',
             function() {
                 console.log('Conectado al servidor de comandos.');
+                hideLoadingScreen();
             },
             function(event) {
                 console.error('Error de conexión con el servidor de comandos:', event);
+                hideLoadingScreen();
             },
             function(event){
                 console.warn('Conexión commands cerrada: ', event);
             }
         );
     }
+    function showLoadingScreen() {
+        document.getElementById('loading-container').style.display = 'flex';
+    }
+    function hideLoadingScreen() {
+        document.getElementById('loading-container').style.display = 'none';
+    }
 
-    document.getElementById('updateStatusButton').addEventListener('click', function() {
+    document.getElementById('updateStatusButton').addEventListener('click', function() {//actualiza estado de la partida en la posicion 0 a true en el servidor el resto de los estados es cero
         const command = JSON.stringify({ index: 0, state: false });
         if (socketCommands.readyState === WebSocket.OPEN) {
             socketCommands.send(command);
@@ -92,14 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('La conexión con el servidor de comandos no está abierta.');
         }
     });
-    //button for auto-auto scroll
-    document.getElementById('toggleScrollButton')?.addEventListener('click', function() {
+    
+    document.getElementById('toggleScrollButton')?.addEventListener('click', function() {//button for auto-auto scroll
         autoScroll = !autoScroll;
         this.textContent = autoScroll ? 'Desactivar Auto-scroll' : 'Activar Auto-scroll';
         console.log(`Auto-scroll ${autoScroll ? 'activado' : 'desactivado'}.`);
     });
 
-    document.getElementById('reconnectButton')?.addEventListener('click', function() {
+    document.getElementById('reconnectButton')?.addEventListener('click', function() {//button for reconect with socket
         console.log('Intentando reconectar...');
         reconnectSockets();
     });
