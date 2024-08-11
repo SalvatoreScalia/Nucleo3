@@ -42,7 +42,10 @@ const WebSocketService = (function() {
                     hideLoadingScreen();
                 },
                 (event) => console.error('Error de conexión con el servidor de comandos:', event),
-                (event) => console.warn('Conexión commands cerrada:', event)
+                (event) => {
+                    hideLoadingScreen();
+                    console.warn('Conexión commands cerrada:', event)
+                }
             );
         }
         else{
