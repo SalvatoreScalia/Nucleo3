@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function connectWebSockets() {
         socketData = WebSocketService.connectDataIncoming(
-            'ws://localhost:8765',
+            'ws://9f4da686-0560-4b5d-b7a4-0dbc8199db2c-00-1l5hizes5v288.kirk.replit.dev:8765',
             (event) => {
                 const messageDiv = document.getElementById('messages');
                 const message = document.createElement('p');
