@@ -25,7 +25,7 @@ const WebSocketService = (function() {
             showLoadingScreen();
             // Reconnect
             connectDataIncoming(
-                'ws://localhost:8765',
+                'ws://9f4da686-0560-4b5d-b7a4-0dbc8199db2c-00-1l5hizes5v288.kirk.replit.dev:3001',
                 socketData.onmessage,     
                 () => {
                     console.log('Conectado al servidor dataIncoming.');
@@ -36,7 +36,7 @@ const WebSocketService = (function() {
             );
 
             connectCommands(
-                'ws://localhost:8766',
+                'ws://9f4da686-0560-4b5d-b7a4-0dbc8199db2c-00-1l5hizes5v288.kirk.replit.dev:3002',
                 () => {
                     console.log('Conectado al servidor de comandos.');
                     hideLoadingScreen();
