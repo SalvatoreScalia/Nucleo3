@@ -1,6 +1,5 @@
 function connectWebSockets() {
     socketData = WebSocketService.connectDataIncoming(
-        configStrings["urlServer"]+":3001/data",
         (event) => {
             const messageDiv = document.getElementById('messages');
             const message = document.createElement('p');
@@ -20,7 +19,6 @@ function connectWebSockets() {
     );
 
     socketCommands = WebSocketService.connectCommands(
-        'https://d3313e93-240b-45e4-be44-0ad52901106a-00-1r2w1zvo1mk1h.worf.replit.dev:3002/commands',
         () => {
             console.log('Conectado al servidor de comandos.');
             hideLoadingScreen();
@@ -43,4 +41,3 @@ function reconnectSockets() {
         console.log(`Ya estas conectado socketData: ${socketData.readyState} socketCommands: ${socketCommands.readyState}`);
     }
 }
-
