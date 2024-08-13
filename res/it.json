@@ -1,0 +1,10 @@
+{
+    "reconnectingSocketsMessage": "Riconnessione dei socket...",
+    "connectedDataIncomingMessage": "Connesso al server {{serverName}}.",
+    "dataIncomingConnectionError": "Errore di connessione con il server {{serverName}}: {{error}}",
+    "dataIncomingConnectionClosed": "Connessione {{serverName}} chiusa: {{reason}}",
+    "connectedCommandsMessage": "Connesso al server dei comandi.",
+    "commandsConnectionError": "Errore di connessione con il server dei comandi: {{error}}",
+    "commandsConnectionClosed": "Connessione dei comandi chiusa: {{reason}}",
+    "commandServerNotOpenError": "La connessione con il server dei comandi non è aperta."
+}
