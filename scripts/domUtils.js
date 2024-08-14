@@ -44,7 +44,7 @@ function loadLanguageStrings(language) {
 // Function to load the language JSON file
 async function loadLanguageStrings(language) {
     try {
-        const response = await fetch(`res/${language}.json`);
+        const response = await fetch(`../res/${language}.json`);
         if (!response.ok) {
             throw new Error(`Could not load language file: ${response.statusText}`);
         }
@@ -60,7 +60,7 @@ async function loadLanguageStrings(language) {
 // Function to load the fallback language JSON file (English in this case)
 async function loadFallbackLanguageStrings() {
     try {
-        const response = await fetch('res/en.json');
+        const response = await fetch(`../res/en.json`);
         if (!response.ok) {
             throw new Error(`Could not load fallback language file: ${response.statusText}`);
         }

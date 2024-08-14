@@ -1,5 +1,11 @@
+const url = 'wss//d3313e93-240b-45e4-be44-0ad52901106a-00-1r2w1zvo1mk1h.worf.replit.dev';
+const portCommands = ':3002';
+const portData = ':3001';
+const pathCommands = '/commands';
+const pathData = '/data';
+
 function connectWebSockets() {
-    socketData = WebSocketService.connectDataIncoming(
+    socketData = WebSocketService.connectDataIncoming((url+portData+pathData),
         (event) => {
             const messageDiv = document.getElementById('messages');
             const message = document.createElement('p');
@@ -18,7 +24,7 @@ function connectWebSockets() {
         (event) => console.warn('Conexión dataIncoming cerrada:', event)
     );
 
-    socketCommands = WebSocketService.connectCommands(
+    socketCommands = WebSocketService.connectCommands((url+portCommands+pathCommands),
         () => {
             console.log('Conectado al servidor de comandos.');
             hideLoadingScreen();
