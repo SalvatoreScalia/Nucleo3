@@ -1,5 +1,4 @@
 let autoScroll = true;
-const langStrings = loadLanguageStrings('es');
 
 function showLoadingScreen() {
     document.getElementById('loading-container').style.display = 'flex';
@@ -14,13 +13,13 @@ function clearBuffer(numberOfLinesStartToEnd) {
     while (mensajesDiv.childElementCount > numberOfLinesStartToEnd) {
         mensajesDiv.removeChild(mensajesDiv.firstChild);
     }
-    console.log(langStrings.clearBuffer);
+    console.log('Clear Buffer Message!');
 }
 
 function toggleAutoScroll(button) {
     autoScroll = !autoScroll;
     button.textContent = autoScroll ? 'Desactivar Auto-scroll' : 'Activar Auto-scroll';
-    console.log(`Auto-scroll ${autoScroll ? 'activado' : 'desactivado'}.`);
+    console.log(`Auto-scroll ${autoScroll ? 'enabled' : 'disabled'}.`);
 }
 
 function isAutoScrollEnabled() {
