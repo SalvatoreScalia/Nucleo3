@@ -1,5 +1,5 @@
 let autoScroll = true;
-const langStrings = loadLanguageStrings('en');
+const langStrings = loadLanguageStrings('es');
 
 function showLoadingScreen() {
     document.getElementById('loading-container').style.display = 'flex';
@@ -14,7 +14,7 @@ function clearBuffer(numberOfLinesStartToEnd) {
     while (mensajesDiv.childElementCount > numberOfLinesStartToEnd) {
         mensajesDiv.removeChild(mensajesDiv.firstChild);
     }
-    console.log('Buffer de mensajes limpiado.');
+    console.log(langStrings.clearBuffer);
 }
 
 function toggleAutoScroll(button) {
@@ -42,32 +42,33 @@ function loadLanguageStrings(language) {
 }
 
 // Function to load the language JSON file
-async function loadLanguageStrings(language) {
+async function loadStringsFromFile(language) {
     try {
-        const response = await fetch(`../res/${language}.json`);
+        const response = await fetch(`../res/${language}`);
         if (!response.ok) {
             throw new Error(`Could not load language file: ${response.statusText}`);
         }
         const data = await response.json();
+        console.log('Success loading language strings!')
         return data;
     } catch (error) {
         console.error('Error loading language strings:', error);
         // Fallback to English if there is an error
-        return await loadFallbackLanguageStrings();
+        return await loadFallbackLanguageFromFile();
     }
 }
 
 // Function to load the fallback language JSON file (English in this case)
-async function loadFallbackLanguageStrings() {
+async function loadFallbackLanguageFromFile() {
     try {
-        const response = await fetch(`../res/en.json`);
+        const response = await fetch(`../res/es.json`);
         if (!response.ok) {
             throw new Error(`Could not load fallback language file: ${response.statusText}`);
         }
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error loading fallback language strings:', error);
+        console.error('Error loading fallback language strings from file:', error);
         return {};
     }
 }

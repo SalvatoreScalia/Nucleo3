@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const role = localStorage.getItem('userRole');
-    
+    const role = localStorage.getItem('role');
+    const id = localStorage.getItem('id');
     if (!role || role !=='admin') {
         // Redirige al login si no hay rol en localStorage
         window.location.href = 'login.html';
@@ -8,8 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (role === 'admin') {
         document.getElementById('admin-container').style.display = 'block';
-        // Conectar WebSockets aquí
-        connectWebSockets();
+        // Inicia la conexión de WebSockets cuando la página se carga
+        window.addEventListener('load', () => {
+            connectWebSockets();
+        });
+        console.log(`The user: ${id} is online`);
     }
 
     setupEventListeners(this);

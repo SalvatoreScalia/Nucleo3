@@ -10,7 +10,7 @@ function setupEventListeners() {
         WebSocketService.sendCommand(command);
     });
     document.getElementById('reconnectButton')?.addEventListener('click', function() {
-        reconnectSockets(document);
+        reconnectSockets();
     });
     document.getElementById('toggleScrollButton')?.addEventListener('click',function(){
         toggleAutoScroll(this);

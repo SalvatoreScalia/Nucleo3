@@ -1,10 +1,8 @@
 {
+    "connectedServerMessage": "Conectado al servidor {{serverName}}.",
+    "connectedWelcomeMessage": "Bienvenido {{nick}},  estás conectado a la partida: {{world_name}}.",
     "reconnectingSocketsMessage": "Reconectando sockets...",
-    "connectedDataIncomingMessage": "Conectado al servidor {{serverName}}.",
-    "dataIncomingConnectionError": "Error de conexión con el servidor {{serverName}}: {{error}}",
-    "dataIncomingConnectionClosed": "Conexión de {{serverName}} cerrada: {{reason}}",
-    "connectedCommandsMessage": "Conectado al servidor de comandos.",
-    "commandsConnectionError": "Error de conexión con el servidor de comandos: {{error}}",
-    "commandsConnectionClosed": "Conexión de comandos cerrada: {{reason}}",
-    "commandServerNotOpenError": "La conexión con el servidor de comandos no está abierta."
+    "dataConnectionClosed": "La conexión al servidor {{serverName}} se cerro. Posible razón: {{reason}}",
+    "dataConnectionError": "Error de conexión con el servidor {{serverName}}: {{error}}",
+    "clearBufferMessage": "Buffer de mensajes limpiado."
 }
