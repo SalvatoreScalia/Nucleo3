@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('load', () => {
             connectWebSockets();
         });
-        console.log(`The user: ${id} is online`);
+        console.log(replacePlaceholders(langStrings.connectWelcomeMessage,));
     }
 
     setupEventListeners(this);
